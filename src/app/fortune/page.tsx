@@ -11,7 +11,7 @@ export default function FortunePage() {
   const [birthMonth, setBirthMonth] = useState(1)
   const [birthDay, setBirthDay] = useState(1)
   const [birthDate, setBirthDate] = useState('')
-  const [result, setResult] = useState<any>(null)
+  const [result, setResult] = useState<TarotReading | ZodiacReading | NumerologyReading | null>(null)
   const [isLoading, setIsLoading] = useState(false)
 
   const handleTarotReading = async () => {

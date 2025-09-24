@@ -120,7 +120,6 @@ export const zodiacSigns: ZodiacSign[] = [
 ]
 
 export const getZodiacSign = (month: number, day: number): ZodiacSign => {
-  const date = new Date(2024, month - 1, day)
   const monthDay = month * 100 + day
   
   if (monthDay >= 321 && monthDay <= 419) return zodiacSigns[0] // 牡羊座

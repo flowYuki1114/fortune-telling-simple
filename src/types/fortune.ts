@@ -4,7 +4,7 @@ export interface FortuneReading {
   id: string
   type: FortuneType
   question?: string
-  result: any
+  result: TarotReading | ZodiacReading | NumerologyReading
   isPremium: boolean
   createdAt: Date
 }

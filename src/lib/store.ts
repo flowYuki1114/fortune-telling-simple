@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+import { TarotReading, ZodiacReading, NumerologyReading } from '@/types/fortune'
 
 interface User {
   id: string
@@ -12,7 +13,7 @@ interface FortuneReading {
   id: string
   type: string
   question?: string
-  result: any
+  result: TarotReading | ZodiacReading | NumerologyReading
   isPremium: boolean
   createdAt: Date
 }
@@ -37,7 +38,7 @@ interface AppState {
     status: 'active' | 'canceled' | 'past_due' | 'unpaid'
     remainingReadings: number
   } | null
-  setSubscription: (subscription: any) => void
+  setSubscription: (subscription: { plan: string; status: string; remainingReadings: number } | null) => void
   
   // UI状態
   isLoading: boolean

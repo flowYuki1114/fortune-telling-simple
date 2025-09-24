@@ -1,6 +1,6 @@
-import { TarotReading, ZodiacReading, NumerologyReading } from '@/types/fortune'
+import { TarotReading, ZodiacReading, NumerologyReading, TarotCard } from '@/types/fortune'
 import { getTarotReading } from '@/data/tarot-cards'
-import { getZodiacSign } from '@/data/zodiac-signs'
+import { getZodiacSign, ZodiacSign } from '@/data/zodiac-signs'
 
 export class FortuneService {
   // タロット占い
@@ -57,7 +57,7 @@ export class FortuneService {
   }
   
   // タロット解釈生成
-  private static generateTarotInterpretation(cards: any[], question?: string): string {
+  private static generateTarotInterpretation(cards: TarotCard[], question?: string): string {
     const cardNames = cards.map(card => card.name).join('、')
     const reversedCards = cards.filter(card => card.reversed)
     
@@ -78,7 +78,7 @@ export class FortuneService {
   }
   
   // タロットアドバイス生成
-  private static generateTarotAdvice(cards: any[]): string {
+  private static generateTarotAdvice(_cards: TarotCard[]): string {
     const adviceList = [
       '直感を信じて行動してください',
       '過去の経験を活かして未来を切り開いてください',
@@ -91,7 +91,7 @@ export class FortuneService {
   }
   
   // 星座解釈生成
-  private static generateZodiacInterpretation(sign: any): string {
+  private static generateZodiacInterpretation(sign: ZodiacSign): string {
     const interpretations = [
       `${sign.name}のあなたは、${sign.element}の${sign.quality}として、${sign.description}。`,
       `現在の星の配置は、あなたの${sign.element}の性質を強く後押ししています。`,
@@ -103,7 +103,7 @@ export class FortuneService {
   }
   
   // 星座アドバイス生成
-  private static generateZodiacAdvice(sign: any): string {
+  private static generateZodiacAdvice(sign: ZodiacSign): string {
     const adviceMap: { [key: string]: string[] } = {
       '火': ['情熱を大切にしてください', '積極的に行動してください', 'リーダーシップを発揮してください'],
       '土': ['着実に努力を続けてください', '実用的なアプローチを心がけてください', '安定を重視してください'],
