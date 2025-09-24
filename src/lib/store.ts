@@ -18,6 +18,12 @@ interface FortuneReading {
   createdAt: Date
 }
 
+interface Subscription {
+  plan: 'free' | 'basic' | 'premium'
+  status: 'active' | 'canceled' | 'past_due' | 'unpaid'
+  remainingReadings: number
+}
+
 interface AppState {
   // ユーザー状態
   user: User | null
@@ -33,12 +39,8 @@ interface AppState {
   clearReadings: () => void
   
   // サブスクリプション状態
-  subscription: {
-    plan: 'free' | 'basic' | 'premium'
-    status: 'active' | 'canceled' | 'past_due' | 'unpaid'
-    remainingReadings: number
-  } | null
-  setSubscription: (subscription: { plan: string; status: string; remainingReadings: number } | null) => void
+  subscription: Subscription | null
+  setSubscription: (subscription: Subscription | null) => void
   
   // UI状態
   isLoading: boolean
